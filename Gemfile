@@ -10,6 +10,9 @@ gem 'rails', '~> 5.2.4', '>= 5.2.4.1'
 gem 'bootstrap', '~> 4.4.1'
 gem 'jquery-rails'
 
+# How to make many users
+gem 'faker', '~> 2.9'
+
 # How to make pages in website
 gem 'will_paginate', '~> 3.2', '>= 3.2.1'
 gem 'will_paginate-bootstrap4', '~> 0.2.2'
