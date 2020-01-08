@@ -7,10 +7,14 @@ class UsersController < ApplicationController
     @user = User.new(users_params)
     if @user.save
       flash[:success] = "Welcome to Elearning System"
-      redirect_to root_url
+      redirect_to @user
     else
       render 'new'
     end
+  end
+
+  def show
+    @user = User.find(params[:id])
   end
 
   private

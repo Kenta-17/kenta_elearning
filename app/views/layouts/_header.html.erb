@@ -3,12 +3,40 @@
         <%= link_to "Elerning System", root_path, class: "navbar-brand" %>
 
         <ul class="navbar-nav ml-auto">
+
+        <li class="nav-item">
+            <%= link_to "Home", root_path, class: "nav-link" %>
+        </li>
+        <li class="nav-item">
+            <%= link_to "About", about_path, class: "nav-link" %>
+        </li>
+
+        <% if signed_in? %>
             <li class="nav-item">
-                <%= link_to "Sign up", signin_path, class: "nav-link" %>
+                <%= link_to "Users", '#', class: "nav-link" %>
             </li>
             <li class="nav-item">
-                <%= link_to "log in", "#", class: "nav-link" %>
+                <%= link_to "Lessons", '#', class: "nav-link" %>
             </li>
+
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" id="navbar-dropdown" data-toggle="dropdown" >
+                    <%= current_user.name %>
+                </a>
+                <div class="dropdown-menu">
+                    <%= link_to "Profile", '#', class: "dropdown-item" %>
+                    <%= link_to "Settings", '#', class: "dropdown-item" %>
+                    <%= link_to "Logout", signout_path, method: :delete, class: "dropdown-item" %>
+                </div>
+            </li>
+        <% else %>
+            <li class="nav-item">
+                <%= link_to "Sign up", signup_path, class: "nav-link" %>
+            </li>
+            <li class="nav-item">
+                <%= link_to "Sing in", signin_path, class: "nav-link" %>
+            </li>
+        <% end %>
         </ul>
     </div>
 </header>
