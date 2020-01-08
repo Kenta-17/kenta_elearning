@@ -1,1 +1,5 @@
-<h1 class="text-center">Show Page</h1>
+<% provide(:title, @user.name) %>
+
+<h1 class="text-center"><%= @user.name %></h1>
+<h1 class="text-center"><%= @user.email %></h1>
+
