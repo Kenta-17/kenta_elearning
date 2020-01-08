@@ -15,3 +15,26 @@
  *= require_tree .
  *= require_self
  */
+
+
+ /* Pagination */
+.paginate {
+    text-align: center;
+  
+    nav {
+      display: inline-block;
+    }
+  }
+  
+.users {
+    list-style: none; // removing the bullets
+    margin: 0; // making everythig center
+    li {
+      overflow: auto;
+      padding: 10px 0;
+      border-top: 1px solid rgb(209, 209, 209);
+      &:last-child {
+        border-bottom: 1px solid rgb(209, 209, 209);
+      }
+    }
+  }
