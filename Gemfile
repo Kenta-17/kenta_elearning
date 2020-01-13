@@ -17,6 +17,10 @@ gem 'faker', '~> 2.9'
 gem 'will_paginate', '~> 3.2', '>= 3.2.1'
 gem 'will_paginate-bootstrap4', '~> 0.2.2'
 
+# How to uploade images
+gem 'carrierwave'
+gem 'mini_magick'
+
 # Use mysql as the database for Active Record
 gem 'mysql2', '>= 0.4.4', '< 0.6.0'
 # Use Puma as the app server

@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  before_action :required_login, only: [:edit, :update]
+
   def new
     @user = User.new
   end
@@ -19,11 +21,30 @@ class UsersController < ApplicationController
 
   def index
     # @users = User.all
-    @users = User.paginate(page: params[:page], per_page: 10)
+    @users = User.paginate(page: params[:page], per_page: 10).order('created_at DESC')
+  end
+
+  def edit
+    @user = User.find(params[:id])
+  end
+
+  def update
+    @user = User.find(params[:id])
+    if @user.update_attributes(users_params)
+      redirect_to user_url(@user)
+    else 
+      render 'edit'
+    end
+  end
+
+  def required_login
+    unless signed_in?
+      redirect_to signin_url
+    end
   end
 
   private
     def users_params
-      params.require(:user).permit(:name, :email, :password, :password_confirmation)
+      params.require(:user).permit(:name, :email, :password, :password_confirmation, :image, :image_cache, :remove_image)
     end
 end

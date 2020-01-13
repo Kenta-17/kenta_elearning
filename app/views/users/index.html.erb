@@ -1,20 +1,36 @@
 <% provide(:title, 'All users') %>
-<h1 class="text-center">All users</h1>
 
-<br>
 
-<div class="paginate mb-3">
-    <%= will_paginate %>
-</div>
+    <h1 class="text-center">All users</h1>
 
-<ul class="users">
-    <% @users.each do |user| %>
-        <li>
-            <%= link_to user.name, user_path(user) %>
-        </li>
-    <% end %>
-</ul>
+    <div class="container">
+        <ul class="users">
+            <% @users.each do |user| %>
+                <div class="row">
+                    <div class="col-mg-8">
+                        <div class="row">
+                            <div class="col">
+                                <% if user.image? %>
+                                    <p><%= image_tag user.image.thumb.url %></p>
+                                <% else %>
+                                    <p><%= image_tag("default.jpg", :size => "50x50") %></p>
+                                <% end %>
+                            </div>
+                            <div class="col pl-1 pt-2">
+                                <%= link_to user.name, user_path(user) %>
+                            </div>
+                        </div>
+                    </div>
 
-<div class="paginate my-3">
-    <%= will_paginate %>
-</div>
+                    <div class="col-mg-4"></div>
+
+                </div>
+            <% end %>
+        </ul>
+    </div>
+
+    <div class="apple_pagination">
+        <%= will_paginate %>
+    </div>
+
+
