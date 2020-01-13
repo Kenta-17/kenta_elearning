@@ -1,0 +1,27 @@
+<% provide(:title, @user.name) %>
+
+<div class="container">
+    <div class="row">
+        <aside class="col-md-3">
+            <section>
+                <%= render 'shared/user_info' %>
+            </section>
+        </aside>
+
+        <div class="col-md-9">
+            <h5>Following</h5>
+            <% @users.each do |user|  %>
+                <div class="media md-3">
+                    <% if user.image? %>
+                         <p><%= image_tag user.image.thumb.url %></p>
+                    <% else %>
+                        <p><%= image_tag("default.jpg", :size => "50x50") %></p>
+                    <% end %>
+                    <div class="media-body m-3">
+                    <p><%= link_to user.name, user %></p>
+                    </div>
+                </div>
+            <% end %>
+        </div>
+    </div>
+</div>
