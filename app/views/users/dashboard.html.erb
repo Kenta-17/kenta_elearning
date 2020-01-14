@@ -1,0 +1,40 @@
+
+<div class="container">
+    <div class="row">
+        <aside class="col-md-3">
+            <section>
+                <div class="row">
+                    <div class="col-md-8">
+                        <div class="media">
+                            <div class="media-body">
+                                <%= image_tag current_user.image.to_s %>
+                                <div class="text-center mt-3 mb-1">
+                                    
+                                </div>
+                                <h2 class="text-center"><%= current_user.name %></h2>
+                                <div class="row">
+                                    <div class="col m-2">
+                                    <h3>
+                                        <%= link_to current_user.active_relationships.count, following_user_path(current_user) %>
+                                    </h3>
+                                    following
+                                    </div>
+                                    <div class="col m-2">
+                                    <h3>
+                                        <%= link_to current_user.passive_relationships.count, followers_user_path(current_user) %>
+                                    </h3>
+                                    followers
+                                    </div>
+                                </div>   
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </aside>
+
+        <div class="col-md-9">
+            <h5>Activity Feeds</h5>
+        </div>
+    </div>
+</div>
