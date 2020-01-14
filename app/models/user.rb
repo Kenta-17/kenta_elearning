@@ -9,5 +9,40 @@ class User < ApplicationRecord
   validates :password, length: { minimum: 3 }, allow_nil: true
 
   mount_uploader :image, ImageUploader
+
+  
+  def active_relationships
+    Relationship.where(follower_id: id)
+    # follower_id = id  # フォローした人を探す
+  end
+
+  def passive_relationships
+    Relationship.where(followed_id: id)
+  end
+
+  def followers
+    ids = passive_relationships.pluck(:follower_id)
+    User.where(id: ids)
+  end
+
+  def following
+    ids = active_relationships.pluck(:followed_id)  # follower_id　だけ取り出す
+    User.where(id: ids) # follower_id の詳細（name,emal,passwor）はUserテーブルが持っているのでそこに見に行く
+  end
+
+
+  def follow(other_user)  #ここでデータベースにデータを登録してる
+    Relationship.create(
+      follower_id: id,
+      followed_id: other_user.id
+    )
+  end
+
+  def relationship(other_user)
+    active_relationships.find_by(
+      followed_id: other_user.id
+    )
+  end
+  
 end
 

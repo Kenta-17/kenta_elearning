@@ -10,6 +10,13 @@ Rails.application.routes.draw do
   post '/signin', to: "sessions#create"
   delete '/signout', to: "sessions#destroy"
 
+  resources :users do # routes に /users/:id/following  /users/:id/followers　ができる
+    member do
+      get :following, :followers
+    end
+  end
+
   resources :users
   resources :sessions, only: [:new, :create, :destroy]
+  resources :relationships, only: [:create, :destroy]
 end

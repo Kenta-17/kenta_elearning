@@ -37,6 +37,20 @@ class UsersController < ApplicationController
     end
   end
 
+  def following
+    @user = User.find(params[:id])
+    @title = "Following"
+    @users = @user.following.paginate(page: params[:page])
+    render "users/follow"
+  end
+
+  def followers
+    @user = User.find(params[:id])
+    @title = "Follower"
+    @users = @user.followers.paginate(page: params[:page])
+    render "users/follow"
+  end
+
   def required_login
     unless signed_in?
       redirect_to signin_url
