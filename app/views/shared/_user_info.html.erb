@@ -13,18 +13,20 @@
                         <% end %>
                     </div>
                     <h2 class="text-center"><%= @user.name %></h2>
-                    <div class="col m-2">
-                    <h3>
-                        <%= link_to @user.active_relationships.count, following_user_path(@user) %>
-                    </h3>
-                    following
-                    </div>
-                    <div class="col m-2">
-                    <h3>
-                        <%= link_to @user.passive_relationships.count, followers_user_path(@user) %>
-                    </h3>
-                    followers
-                    </div>      
+                    <div class="row">
+                        <div class="col m-2">
+                        <h3>
+                            <%= link_to @user.active_relationships.count, following_user_path(@user) %>
+                        </h3>
+                        following
+                        </div>
+                        <div class="col m-2">
+                        <h3>
+                            <%= link_to @user.passive_relationships.count, followers_user_path(@user) %>
+                        </h3>
+                        followers
+                        </div>
+                    </div>   
                 </div>
             </div>
         </div>

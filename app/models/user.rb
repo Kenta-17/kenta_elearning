@@ -43,13 +43,6 @@ class User < ApplicationRecord
       followed_id: other_user.id
     )
   end
-
-  def feed
-    ids = following.pluck(:id)
-    ids << id   # [3,4,5] << 1  # [3,4,5,1]
-
-    Micropost.where(user_id: ids) # フォローしたユーザーの投稿を拾ってきてる
-  end
   
 end
 

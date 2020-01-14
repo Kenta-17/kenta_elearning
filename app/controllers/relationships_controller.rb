@@ -7,10 +7,10 @@ class RelationshipsController < ApplicationController
   end
 
   def destroy
-      relationship = Relationship.find(params[:id])
-      other_user = User.find(relationship.followed_id)
-      relationship.destroy
+    relationship = Relationship.find(params[:id])
+    other_user = User.find(relationship.followed_id)
+    relationship.destroy
 
-      redirect_to other_user
+    redirect_to other_user
   end
 end
