@@ -43,6 +43,21 @@ class User < ApplicationRecord
       followed_id: other_user.id
     )
   end
-  
+
+  # ユーザーをフォローする
+  def add(other_user)
+    adding << other_user
+  end
+
+  # ユーザーをフォロー解除する
+  def remove(other_user)
+    active_relationships.find_by(followed_id: other_user.id).destroy
+  end
+
+  # 現在のユーザーがフォローしてたらtrueを返す
+  def adding?(other_user)
+    adding.include?(other_user)
+  end
+
 end
 
