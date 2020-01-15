@@ -8,9 +8,10 @@
 
 
 User.create(
-  name: "Kenta", 
-  email: "kenta@email.com", 
+  name: "Admin User", 
+  email: "admin@gmail.com", 
   password: "password"
+  admin: true
 )
 
 50.times do |n|
