@@ -50,13 +50,7 @@ class UsersController < ApplicationController
     @users = @user.followers.paginate(page: params[:page])
     render "users/follow"
   end
-
-  def required_login
-    unless signed_in?
-      redirect_to signin_url
-    end
-  end
-
+  
   private
     def users_params
       params.require(:user).permit(:name, :email, :password, :password_confirmation, :image, :image_cache, :remove_image)
