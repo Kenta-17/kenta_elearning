@@ -10,7 +10,7 @@
 User.create(
   name: "Admin User", 
   email: "admin@gmail.com", 
-  password: "password"
+  password: "password",
   admin: true
 )
 
