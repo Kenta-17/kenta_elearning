@@ -21,3 +21,10 @@ User.create(
       password: "password"
 )
 end
+
+50.times do |n|
+    Category.create(
+      title: Faker::Verb.base,
+      description: Faker::Quote.famous_last_words,
+    )
+end

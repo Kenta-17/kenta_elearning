@@ -1,6 +1,6 @@
 class Admin::UsersController < ApplicationController
   before_action :required_login, :admin_user
-  
+
   def index
     @users = User.paginate(page: params[:page], per_page: 10).order('created_at DESC')
   end

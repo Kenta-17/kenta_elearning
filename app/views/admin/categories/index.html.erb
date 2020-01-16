@@ -1,0 +1,26 @@
+<h4 class="ml-3">Categories</h4>
+<div class="new-category ml-3">
+    <%= link_to "Create New", new_admin_category_path, class: "btn btn-sm btn-outline-primary" %></div>
+</div>
+
+<div class="container">
+    <% @categories.each do |category| %>
+        <div class="row m-2">
+            <div class="col-md-3">
+                <%= category.title %>
+            </div>
+            <div class="col-md-6">
+                <%= category.description %>
+            </div>
+            <div class="col-md-3">
+                 <%= link_to "Edit", edit_admin_category_path(category), class: "btn btn-sm btn-outline-info" %>
+                 <%= link_to "Delete", admin_category_path(category), class: "btn btn-sm btn-outline-danger", method: :delete, data: {confirm: 'Are you sure?' } %>
+            </div>
+        </div>
+    <% end %>
+</div>
+
+<div class="apple_pagination">
+    <%= will_paginate %>
+</div>
+
