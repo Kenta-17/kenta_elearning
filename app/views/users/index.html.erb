@@ -1,10 +1,8 @@
 <% provide(:title, 'All users') %>
 
-
-    <h1 class="text-center">All users</h1>
+<h1 class="text-center">All users</h1>
 
     <div class="container">
-        <ul class="users">
             <% @users.each do |user| %>
                 <div class="row">
                     <div class="col-mg-8">
@@ -26,7 +24,6 @@
 
                 </div>
             <% end %>
-        </ul>
     </div>
 
     <div class="apple_pagination">

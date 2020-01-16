@@ -15,7 +15,7 @@
                     <h2 class="text-center"><%= @user.name %></h2>
                     
                     <% if current_user.admin? && @user == current_user %>
-                        <%= link_to "Admin", admin_home_path, class: "btn btn-primary" %>
+                        <div class="text-center m-2"><%= link_to "Admin", admin_home_path, class: "btn btn-primary" %></div>
                     <% end %>
 
                     <div class="row">
