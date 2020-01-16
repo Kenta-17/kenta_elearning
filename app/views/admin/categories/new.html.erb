@@ -15,8 +15,11 @@
                     <%= f.text_field :description, class: "form-control mb-4" %>
                 </div>
 
-                <%= f.submit "Create an category", class: "btn btn-block btn-info" %>
+                <%= f.submit "Create", class: "btn btn-block btn-info" %>
             <% end %>
+            <div class="text-center">
+                <%= link_to "Back", admin_categories_path, class: "btn btn-link" %>
+            </div>
         </div>
     </div>
 </div>
