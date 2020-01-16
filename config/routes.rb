@@ -1,10 +1,5 @@
 Rails.application.routes.draw do
   namespace :admin do
-    get 'users/index'
-    get 'users/update'
-    get 'users/destroy'
-  end
-  namespace :admin do
     get 'home', to: 'pages#home'
     resources :users
   end
