@@ -4,7 +4,7 @@
             <div class="container">
                 <h1 class="text-center">Edit category</h1>
 
-                <%= form_for @category, url: admin_category_path, html: {method: "patch"} do |f| %>
+                <%= form_for [:admin, @category] do |f| %>
                     <div class="form-group">
                         <%= f.label :title %>
                         <%= f.text_field :title, class: "form-control mb-4" %>
