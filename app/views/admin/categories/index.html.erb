@@ -8,7 +8,7 @@
     <% @categories.each do |category| %>
         <div class="row m-2">
             <div class="col-md-3">
-                <%= category.title %>
+                <%= link_to category.title, admin_category_words_path(category) %>
             </div>
             <div class="col-md-6">
                 <%= category.description %>

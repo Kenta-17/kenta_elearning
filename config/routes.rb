@@ -2,8 +2,14 @@ Rails.application.routes.draw do
   namespace :admin do
     get 'home', to: 'pages#home'
     resources :users
-    resources :categories
+    resources :categories do
+      resources :words
+      member do
+        get :words
+      end
+    end
   end
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root 'static_pages#home'
 
@@ -21,6 +27,12 @@ Rails.application.routes.draw do
       get :following, :followers
     end
   end
+
+  # resources :categories do
+  #   member do
+  #     get :words
+  #   end
+  # end
 
   resources :users
   resources :sessions, only: [:new, :create, :destroy]
