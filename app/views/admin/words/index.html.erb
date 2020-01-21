@@ -1,0 +1,28 @@
+<h2 class="ml-3"><%= @category.title %></h2>
+
+<div class="container">
+    <div class="new-category mb-2 text-right">
+        <%= link_to  'New Word', new_admin_category_word_path, class:"btn btn-sm btn-outline-primary" %>
+    </div>
+        
+        <% @words.each do |word| %>
+            <div class="row">
+                <div class="col-md-4">
+                    <%= word.content %> 
+                </div>
+
+                <div class="col-md-4">
+                    <%= word.correct_answer %>
+                </div>
+                <div class="col-md-4 text-right">
+                    <%= link_to "Edit", edit_admin_category_word_path(@category, word), class: "btn btn-sm btn-outline-info" %>
+                    <%= link_to "Delete", admin_category_word_path(@category, word), class: "btn btn-sm btn-outline-danger", method: :delete, data: {confirm: 'Are you sure?' } %>
+                </div>
+            </div>
+        <% end %>
+        <div class="text-center">
+            <%= link_to "Back", admin_categories_path, class: "btn btn-link" %>
+        </div>
+    </div>
+</div>
+

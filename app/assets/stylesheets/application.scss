@@ -17,7 +17,12 @@
  */
 
 body {
-  font-family: 'Quicksand', sans-serif;
+  font-family: 'Ubuntu', sans-serif;
+  color: #333333;
+}
+
+body > .container {
+  padding: 30px 15px 0;
 }
 
 a {
@@ -31,7 +36,7 @@ a {
 
  /* Pagination */
 
- .apple_pagination {
+.apple_pagination {
   text-align: center;
   padding: 1em;
   cursor: default;
@@ -52,3 +57,8 @@ a {
   text-decoration: underline;
 }
 
+input[type="text"], input[type="password"], input[type="file"] {
+  height: 50px;
+}
+
+ 
