@@ -9,7 +9,10 @@ class Admin::WordsController < ApplicationController
   def new
     @category = Category.find(params[:category_id])
     @word = @category.words.build
+    3.times { @word.choices.build }
   end
+
+  
 
   def create
     @category = Category.find(params[:category_id])
@@ -51,6 +54,6 @@ class Admin::WordsController < ApplicationController
 
   private
    def words_params
-    params.require(:word).permit(:content)
+    params.require(:word).permit(:content, choices_attributes: [:id, :content, :correct])
    end
 end

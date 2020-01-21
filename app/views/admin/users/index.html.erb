@@ -19,9 +19,9 @@
             </div>
             <div class="col-md-3">
                 <% if user.admin? %>
-                    <%= link_to "Remove", admin_user_path(user), method: :delete, class: "btn btn-sm btn-success" %>
+                    <%= link_to "Remove", admin_user_path(user), method: :delete, class: "btn btn-sm btn-danger" %>
                 <% else %>
-                    <%= link_to "Add", admin_user_path(user), method: :patch, class: "btn btn-sm btn-secondary" %>
+                    <%= link_to "Add", admin_user_path(user), method: :patch, class: "btn btn-sm btn-info" %>
                 <% end %>
             </div>
         </div>

@@ -1,8 +1,17 @@
 <%= form_for [:admin, @category, @word] do |f| %>
     <%= render "shared/error_messages", object: @word %>
     <div class="form-group">
-        <%= f.label :content, "Word" %>
-        <%= f.text_field :content, class: "form-control mb-4" %>
+        <%= f.text_field :content, placeholder: "Word", class: "form-control mb-4" %>
     </div>
+
+    <div class="form-group">
+        <% label_tag "choices" %>
+        <%= f.fields_for :choices do |choice|  %>
+        <%= choice.text_field :content, class: "form-control" %>
+        <%= choice.check_box :correct, class: "d-inline" %>
+        <p class="d-inline">This is the correct answer! </p>
+        <% end %>
+    </div>
+    
     <%= f.submit  "Create", class: "btn btn-block btn-info" %>
 <% end %>

@@ -4,31 +4,19 @@
     <div class="col-md-6 mx-auto">
         <div class="container">
             <h1 class="text-center">Edit your profile</h1>
+            <br>
 
             <%= form_for @user do |f| %>
                 <%= render 'shared/error_messages', object: f.object %>
                 <div class="form-group">
-                    <%= f.label :name %>
                     <%= f.text_field :name, class: "form-control mb-4" %>
                 </div>
 
                 <div class="form-group">
-                    <%= f.label :email %>
                     <%= f.text_field :email, class: "form-control mb-4" %>
-                </div>
-
-                <div class="form-group">
-                    <%= f.label :password %>
-                    <%= f.password_field :password, class: "form-control mb-4" %>
-                </div>
-
-                <div class="form-group">
-                    <%= f.label :password_confirmation %>
-                    <%= f.password_field :password_confirmation, class: "form-control mb-4" %>
                 </div>
                 
                 <div class="form-group">
-                    <%= f.label :image %>
                     <%= f.file_field :image, accept: 'image/jpeg,image/gif,image/png', class: "form-control mb-4" %>
                     <%= f.hidden_field :image_cache %>
                     <div class="image-cache">
@@ -42,7 +30,7 @@
                     <% end %>
                 </div>                
 
-                <%= f.submit "Save changes", class: "btn btn-block btn-info" %>
+                <%= f.submit "Save", class: "btn btn-block btn-info" %>
             <% end %>
         </div>
     </div>
