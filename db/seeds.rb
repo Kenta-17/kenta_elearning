@@ -22,10 +22,19 @@ User.create(
 )
 end
 
-50.times do |n|
-  Category.create(
-    title: Faker::Verb.base,
-    description: Faker::Quote.famous_last_words,
-  )
-end
+20.times do |n|
+  title = Faker::Name.unique.name
+  description =  "Lorem Epsum"
+  Category.create!(title: title,description: description)
 
+  10.times do
+    content = Faker::Lorem.word
+    word = Category.all.sample.words.build content: content
+    word.choices = [
+      Choice.new(content: content, correct: true),
+      Choice.new(content: Faker::Music.instrument, correct: false),
+      Choice.new(content: Faker::Music.chord, correct: false)
+    ].shuffle
+    word.save(validate: false)
+  end
+end

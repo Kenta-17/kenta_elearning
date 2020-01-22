@@ -28,13 +28,8 @@ Rails.application.routes.draw do
     end
   end
 
-  # resources :categories do
-  #   member do
-  #     get :words
-  #   end
-  # end
-
   resources :users
   resources :sessions, only: [:new, :create, :destroy]
   resources :relationships, only: [:create, :destroy]
+  resources :categories
 end
