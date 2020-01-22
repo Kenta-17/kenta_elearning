@@ -1,0 +1,43 @@
+<% provide(:title, 'Lessons') %>
+
+<h1 class="text-center">Lessons</h1>
+<br>
+
+<div class="container">
+    <div class="row">
+        <% @categories.each do |category| %>
+            <div class="col-lg-6">
+                <div class="card text-left">
+
+                <div class="card-header">
+                    <div class="row">
+                        <div class="col-md-9">
+                            <h4 class="card-title"><%= category.title %></h4>
+                        </div>
+                        <div class="col-md-3 text-right">
+                            <p><%= category.active_words.count %> words</p>
+                        </div>
+                    </div>
+                </div>
+
+    
+
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-9">
+                                <p class="card-text"><%= category.description %></p>
+                            </div>
+                            <div class="col-md-3 text-right">
+                                <p><%= link_to "Learn", "#", class: "btn btn-sm btn-info" %></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <% end %>
+    </div>
+</div>
+
+<div class="apple_pagination">
+    <%= will_paginate %>
+</div>
