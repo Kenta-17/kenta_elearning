@@ -32,7 +32,7 @@
                                 <% if lesson.nil? %>
                                     <p><%= link_to "Start Lesson", lessons_path(category_id: category.id), method: :post, class: "btn btn-sm btn-outline-info"%></p>
                                 <% else %>
-                                    <p><%= link_to "Show result", "#", class: "btn btn-sm btn-outline-danger" %></p>
+                                    <p><%= link_to "Show result", lesson_path(lesson.id), class: "btn btn-sm btn-outline-danger" %></p>
                                 <% end %>
                             </div>
                         </div>
