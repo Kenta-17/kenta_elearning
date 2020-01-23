@@ -1,6 +1,8 @@
 class User < ApplicationRecord
   before_save { email.downcase! }
 
+  has_many :lessons, dependent: :destroy
+
   validates :name, presence: true, length: { minimum: 3, maximum: 50 }
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   validates :email, presence: true, length: { minimum: 3, maximum: 65 }, format: { with: VALID_EMAIL_REGEX }, uniqueness: { case_sensitive: false }
@@ -57,6 +59,10 @@ class User < ApplicationRecord
   # 現在のユーザーがフォローしてたらtrueを返す
   def adding?(other_user)
     adding.include?(other_user)
+  end
+
+  def lesson_taken(cat_id)
+    lesson = lessons.find_by(category_id: cat_id)
   end
 
 end

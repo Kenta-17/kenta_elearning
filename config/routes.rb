@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  get 'answers/new'
+  get 'lessons/create'
+  get 'lessons/show'
   namespace :admin do
     get 'home', to: 'pages#home'
     resources :users
@@ -32,4 +35,7 @@ Rails.application.routes.draw do
   resources :sessions, only: [:new, :create, :destroy]
   resources :relationships, only: [:create, :destroy]
   resources :categories
+  resources :lessons do
+    resources :answers
+  end
 end
