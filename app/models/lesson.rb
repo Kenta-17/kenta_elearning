@@ -7,6 +7,8 @@ class Lesson < ApplicationRecord
 
   has_many :choices, through: :answers
 
+  has_one :activity, as: :action
+
   def next_word
     (category.words - words).first
   end
