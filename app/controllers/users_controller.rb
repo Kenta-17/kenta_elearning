@@ -17,6 +17,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @activities = @user.activities.paginate(page: params[:page], per_page: 10)
   end
 
   def index
@@ -50,9 +51,15 @@ class UsersController < ApplicationController
     @users = @user.followers.paginate(page: params[:page])
     render "users/follow"
   end
+
+  def dashboard
+    @activities = Activity.where("user_id IN (?) OR user_id = ? ", current_user.following_ids, current_user.id ).paginate(page: params[:page], per_page: 10)
+  end
+
   
   private
     def users_params
       params.require(:user).permit(:name, :email, :password, :password_confirmation, :image, :image_cache, :remove_image)
     end
 end
+

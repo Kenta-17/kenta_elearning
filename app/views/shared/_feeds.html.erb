@@ -1,0 +1,53 @@
+    <div class="row">
+        <% if @activities.any? %>
+            <% @activities.each do |activity| %>
+                <div class="col-md-3">
+                    <% if activity.user.image? %>
+                        <p><%= image_tag activity.user.image.thumb.url %></p>
+                    <% else %>
+                        <p><%= image_tag("default.jpg", :size => "50x50") %></p>
+                    <% end %>
+                </div>
+                
+                <div class="col-md-9 mb-3">
+                    <% if activity.action_type == "Lesson" %>
+                        <% if activity.user == current_user %>
+                            <p><%= link_to "You", user_path(current_user)  %> learned
+                                <%= activity.action.result %> of <%= activity.action.category.words.count %>
+                                in <%= link_to activity.action.category.title, lesson_path(activity.action.id) %>
+                            </p>
+                        <% else %>
+                            <p><%= link_to activity.user.name, user_path(activity.user)  %> learned
+                                <%= activity.action.result %> of <%= activity.action.category.words.count %>
+                                in <%= link_to activity.action.category.title, lesson_path(activity.action.id) %>
+                            </p>
+                        <% end %>
+                    <% else %>
+                        <% followed_user = User.find_by(id: activity.action.followed_id) %>
+                        <% if activity.user == current_user %>
+                            <p>
+                                <%= link_to "You", user_path(current_user) %> followed 
+                                <%= link_to followed_user.name, user_path(followed_user) %>
+                            </p>
+                        <% else %>
+                            <p>
+                                <%= link_to activity.user.name, user_path(activity.user) %> followed 
+                                <%= link_to followed_user.name, user_path(followed_user) %>
+                            </p>
+                        <% end %> 
+                        
+                    <% end %>
+                    <div>
+                        <small><%= time_ago_in_words(activity.created_at) %> ago.</small>
+                    </div>
+                </div>
+            <% end %>
+        <% else %>
+            <h5>Nothing to show</h5>    
+        <% end %>
+    </div>
+
+
+<div class="apple_pagination">
+    <%= will_paginate @activities %>
+</div>
