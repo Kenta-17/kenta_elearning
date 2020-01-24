@@ -49,6 +49,6 @@ test:
 #
 production:
   <<: *default
-  database: kenta_elearning_production
-  username: kenta_elearning
-  password: <%= ENV['KENTA_ELEARNING_DATABASE_PASSWORD'] %>
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
